@@ -1,0 +1,9 @@
+sudo: required
+service:
+    - docker
+
+before_install:
+    - docker build -t miloscpt/docker-react-g -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true miloscpt/docker-react-g npm run test
