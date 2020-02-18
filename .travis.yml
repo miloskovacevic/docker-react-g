@@ -7,3 +7,14 @@ before_install:
 
 script:
     - docker run -e CI=true miloscpt/docker-react-g npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-react-g"
+    env: "DockerReactG-env"
+    bucket_name: "elasticbeanstalk-us-east-2-260441512313"
+    bucket_path: "docker-react-g"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
